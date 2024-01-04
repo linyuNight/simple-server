@@ -1,9 +1,12 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const history = require('connect-history-api-fallback');
 
 // 静态资源中间件，将 public 目录映射到根路径
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(history());
 
 // 用于处理根路径的路由
 app.get('/', (req, res) => {
